@@ -1,7 +1,8 @@
-const request = require('request')
+const request = require('request');
+const config = require('../config');
 
 const geocode = (address, callback) => {
-    const url = 'http://api.mapbox.com/geocoding/v5/mapbox.places/'+ encodeURIComponent(address) +'.json?access_token=pk.eyJ1IjoibXlzZWxmLXJvbmluIiwiYSI6ImNrMXUxOXJsczA1bjYzY3BheHc3YThmNDkifQ.D-u69vJBCra5SmlFxHMbBg&limit=1';
+    const url = 'http://api.mapbox.com/geocoding/v5/mapbox.places/'+ encodeURIComponent(address) +'.json?access_token=' + config.mapboxKey + '&limit=1';
 
     request({url, json: true},(error, {body}) => {
         if(error) {
